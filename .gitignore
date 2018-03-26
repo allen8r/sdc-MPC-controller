@@ -1,0 +1,4 @@
+#ignore all below
+build/*
+vscode/*
+Ipopt-3.12.7/
