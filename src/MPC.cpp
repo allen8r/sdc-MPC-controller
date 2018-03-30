@@ -2,13 +2,13 @@
 #include <cppad/cppad.hpp>
 #include <cppad/ipopt/solve.hpp>
 #include "Eigen-3.3/Eigen/Core"
-#include <limits>
 
 using CppAD::AD;
 
+
 // Set the timestep length and duration
 size_t N = 10;
-double dt = 0.15;
+double dt = 0.14;
 
 // This value assumes the model presented in the classroom is used.
 //
@@ -58,7 +58,7 @@ class FG_eval {
     for (size_t t = 0; t < N; t++) {
       fg[0] += 2000 * CppAD::pow(vars[cte_start + t], 2);
       fg[0] += 2000 * CppAD::pow(vars[epsi_start + t], 2);
-      fg[0] += CppAD::pow(vars[v_start + t] - ref_v, 2);
+      fg[0] +=  CppAD::pow(vars[v_start + t] - ref_v, 2);
     }
 
     // Minimize use of actuators (steering and acceleration)
@@ -162,12 +162,12 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
   }
 
   // Set the initial state
-  //vars[x_start] = x;
-  //vars[y_start] = y;
-  //vars[psi_start] = psi;
-  //vars[v_start] = v;
-  //vars[cte_start] = cte;
-  //vars[epsi_start] = epsi;
+  // vars[x_start] = x;
+  // vars[y_start] = y;
+  // vars[psi_start] = psi;
+  // vars[v_start] = v;
+  // vars[cte_start] = cte;
+  // vars[epsi_start] = epsi;
   
   // Lower and Upper limits for variables.
   Dvector vars_lowerbound(n_vars);
@@ -252,7 +252,7 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
   auto cost = solution.obj_value;
   std::cout << "Cost " << cost << std::endl;
 
-  // TODO: Return the first actuator values. The variables can be accessed with
+  // Return the first actuator values. The variables can be accessed with
   // `solution.x[i]`.
   //
   // {...} is shorthand for creating a vector, so auto x1 = {1.0,2.0}

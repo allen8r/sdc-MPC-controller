@@ -103,7 +103,7 @@ int main() {
 
           // Translate way points to vehicle coordinate system
           for (size_t i = 0; i < ptsx.size(); i++) {
-            // shift car reference angle to 90 defrees
+            // shift car reference angle to 90 degrees
             double x_shifted = ptsx[i] - px;
             double y_shifted = ptsy[i] - py;
 
@@ -117,7 +117,9 @@ int main() {
           double cte = polyeval(fitCurve_coeffs, 0);
 
           // Compute epsi
+          // Recall: epsi = psi - psi_desired where psi_desired = atan(f'(x))
           //double epsi = psi - atan(fitCurve_coeffs[1] + 2 * px * fitCurve_coeffs[2] + 3 * fitCurve_coeffs[3] * pow(px, 2));
+          //Assuming px = 0 and psi = 0, epsi reduces to the following:
           double epsi = -atan(fitCurve_coeffs[1]);
 
           Eigen::VectorXd state(6);
@@ -162,7 +164,7 @@ int main() {
           // the points in the simulator are connected by a Yellow line
           // Use fit curve to plot way points to show reference line
           double x_val = 2.5;
-          int num_points = 20;
+          int num_points = 30;
           for (int i = 0; i < num_points; i++) {
             next_x_vals.push_back(x_val*i);
             next_y_vals.push_back(polyeval(fitCurve_coeffs, x_val*i));
