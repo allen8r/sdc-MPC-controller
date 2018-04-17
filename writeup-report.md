@@ -39,9 +39,9 @@ cte<sub>t+1</sub> = (f(x<sub>t</sub>) - y<sub>t</sub>) + v<sub>t</sub> * sin(eps
 epsi<sub>t+1</sub> = (psi<sub>t</sub> - psi_des<sub>t</sub>) + v<sub>t</sub> * delta<sub>t</sub> / Lf * dt
 --->
 
-<div style="text-align: center;">
+<p align="center">
 <img src="https://latex.codecogs.com/png.latex?\inline&space;\dpi{120}&space;\large&space;\begin{aligned}&space;x_{t&plus;1}&space;&=&space;x_t&space;&plus;&space;v_t&space;*&space;cos(psi_t)&space;*&space;dt&space;\\&space;y_{t&plus;1}&space;&=&space;y_t&space;&plus;&space;v_t&space;*&space;sin(psi_t)&space;*&space;dt&space;\\&space;psi_{t&plus;1}&space;&=&space;psi_t&space;&plus;&space;v_t&space;/&space;Lf&space;*&space;delta_t&space;*&space;dt&space;\\&space;v_{t&plus;1}&space;&=&space;v_t&space;&plus;&space;a_t&space;*&space;dt&space;\\&space;cte_{t&plus;1}&space;&=&space;(f(x_t)&space;-&space;y_t)&space;&plus;&space;v_t&space;*&space;sin(epsi_t)&space;*&space;dt&space;\\&space;epsi_{t&plus;1}&space;&=&space;(psi_t&space;-&space;psi\_des_t)&space;&plus;&space;v_t&space;*&space;delta_t&space;/&space;Lf&space;*&space;dt&space;\end{aligned}" title="Model Equations" />
-</div>
+</p>
 
 ### Timestep Length and Elapsed Duration (N & dt)
 
@@ -52,9 +52,9 @@ $$[delta_1, a_1, delta_2, a_2,\dots, delta_{N-1}, a_{N-1}]$$
 
 [ delta<sub>1</sub>, a<sub>1</sub>, delta<sub>2</sub>, a<sub>2</sub>,..., delta<sub>N-1</sub>, a<sub>N-1</sub> ]
 --->
-<div style="text-align: center;">
+<p align="center">
 <img src="https://latex.codecogs.com/png.latex?\inline&space;\dpi{120}&space;\large&space;$$[delta_1,&space;a_1,&space;delta_2,&space;a_2,\dots,&space;delta_{N-1},&space;a_{N-1}]$$" title="Cost Vector of Control Inputs" />
-</div>
+</p>
 
 Since **N** determines the number of variables optimized by the MPC, **N** directly influences the total computational cost. Additionally, the time horizon over which predictions are made is also determined by **N**, i.e., `N * dt`. The product of the two values of **N** and **dt** (the time elapsed between actuations) is the prediction time horizon. A reasonable horizon for prediction is a few seconds for a vehicle moving at high speeds because beyond the reasonable few seconds, the environment will have changed enough to render any further predictions into the future nonsensical. Thus, **N** in concert with **dt** are chosen to yield a prediction horizon of a few seconds as well as minimizing the computational costs, keeping the total number of actuator variables that must be tuned by the optimizer.
 
@@ -86,9 +86,9 @@ At this point, the state (see Model section above) is then passed to the MPC to 
 $$[delta, a, trajx_1, trajy_1, trajx_2, trajy_2, \dots, trajx_N, trajy_N]$$
 --->
 
-<div style="text-align: center;">
+<p align="center">
 <img src="https://latex.codecogs.com/gif.latex?[delta,&space;a,&space;trajx_1,&space;trajy_1,&space;trajx_2,&space;trajy_2,&space;\dots,&space;trajx_N,&space;trajy_N]" title="Solution Prediction Vector" />
-</div>
+</p>
 
 ### Model Predictive Control with Latency
 
